@@ -71,6 +71,12 @@ start.addEventListener("click", () => {
   };
   if (!isRunning) {
     isRunning = true;
+    if (Object.keys(lastGen).length === 0) {
+      alert(
+        "First make some cells live by tapping in the grid and then press Start to see the magic"
+      );
+      return;
+    }
     image.setAttribute("src", "./stop.svg");
     document.getElementById("startText").innerHTML = "Stop";
     document.getElementById("startText").style.color = "red";
