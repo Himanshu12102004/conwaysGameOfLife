@@ -1,0 +1,58 @@
+.dead {
+  border: 1px solid rgba(60, 60, 60, 50);
+  height: 19px;
+  border-collapse: collapse;
+}
+.unselectable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+.live {
+  border: 1px solid rgba(60, 60, 60, 50);
+  background-color: yellow;
+  height: 19px;
+
+  border-collapse: collapse;
+}
+body {
+  background-color: black;
+}
+.buttons {
+  color: aliceblue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  font-family: monospace;
+  font-size: 35px;
+}
+#start {
+  top: 10px;
+  right: 10px;
+}
+#reset {
+  top: 45px;
+  right: 10px;
+}
+#resetText {
+  padding-left: 10px;
+}
+#stop {
+  color: aliceblue;
+}
+#directions {
+  font-size: 20px;
+  font-weight: 500;
+  font-family: monospace;
+  position: fixed;
+  top: 10px;
+  color: aliceblue;
+}
