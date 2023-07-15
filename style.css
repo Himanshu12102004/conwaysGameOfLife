@@ -56,3 +56,12 @@ body {
   top: 10px;
   color: aliceblue;
 }
+
+@media (max-width: 768px) {
+  .buttons {
+    font-size: 20px;
+  }
+  #directions {
+    font-size: 10px;
+  }
+}

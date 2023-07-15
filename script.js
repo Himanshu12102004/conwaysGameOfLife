@@ -1,28 +1,48 @@
+let isRunning = false;
+const image = document.getElementById("img");
 const canvas = document.getElementById("canvas");
 let animationId = null;
 let timeoutId = null;
-const n = parseInt(innerWidth / 20);
-const m = parseInt(innerHeight / 20);
-const image = document.getElementById("img");
-let isRunning = false;
-canvas.style.display = "grid";
-canvas.style.gridTemplateRows = `repeat(${m},20px)`;
-canvas.style.gridTemplateColumns = `repeat(${n},20px)`;
+let n;
+let m;
+const stopAnimation = () => {
+  cancelAnimationFrame(animationId);
+  // Start the timeout
+
+  // Cancel the timeout
+  clearTimeout(timeoutId);
+};
+
+const onload = () => {
+  image.setAttribute("src", "./start.svg");
+  document.getElementById("startText").innerHTML = "Start";
+  isRunning = false;
+  stopAnimation();
+  stopAnimation();
+  n = parseInt(innerWidth / 20);
+  m = parseInt(innerHeight / 20);
+  canvas.innerHTML = "";
+  canvas.style.display = "grid";
+  canvas.style.gridTemplateRows = `repeat(${m},20px)`;
+  canvas.style.gridTemplateColumns = `repeat(${n},20px)`;
+
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      const elem = document.createElement("div");
+      elem.setAttribute("id", `${i}-${j}`);
+      elem.setAttribute("onclick", `livingCell(${i},${j})`);
+      elem.classList.add("dead");
+      canvas.appendChild(elem);
+    }
+  }
+};
+onload();
 const deploy = () => {
   for (const key in lastGen) {
     document.getElementById(key).classList.add("live");
     document.getElementById(key).classList.remove("dead");
   }
 };
-for (let i = 0; i < m; i++) {
-  for (let j = 0; j < n; j++) {
-    const elem = document.createElement("div");
-    elem.setAttribute("id", `${i}-${j}`);
-    elem.setAttribute("onclick", `livingCell(${i},${j})`);
-    elem.classList.add("dead");
-    canvas.appendChild(elem);
-  }
-}
 let lastGen = {};
 let newGen = {};
 const livingCell = (i, j) => {
@@ -104,13 +124,6 @@ const animate = (lastGen) => {
   }
   return newGen;
 };
-const stopAnimation = () => {
-  cancelAnimationFrame(animationId);
-  // Start the timeout
-
-  // Cancel the timeout
-  clearTimeout(timeoutId);
-};
 document.getElementById("reset").addEventListener("click", () => {
   for (const key in lastGen) {
     document.getElementById(key).classList.remove("live");
@@ -125,3 +138,6 @@ document.getElementById("reset").addEventListener("click", () => {
   deploy();
 });
 // for handle
+window.addEventListener("resize", function () {
+  onload();
+});
