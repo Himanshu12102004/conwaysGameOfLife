@@ -1,6 +1,6 @@
 .dead {
   border: 1px solid rgba(60, 60, 60, 50);
-  height: 19px;
+  height: 14px;
   border-collapse: collapse;
 }
 .unselectable {
@@ -17,7 +17,7 @@
 .live {
   border: 1px solid rgba(60, 60, 60, 50);
   background-color: yellow;
-  height: 19px;
+  height: 14px;
 
   border-collapse: collapse;
 }
@@ -44,6 +44,7 @@ body {
 }
 #resetText {
   padding-left: 10px;
+  color: red;
 }
 #stop {
   color: aliceblue;

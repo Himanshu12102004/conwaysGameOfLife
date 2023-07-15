@@ -16,15 +16,18 @@ const stopAnimation = () => {
 const onload = () => {
   image.setAttribute("src", "./start.svg");
   document.getElementById("startText").innerHTML = "Start";
+  document.getElementById("startText").style.color = "lime";
+
   isRunning = false;
   stopAnimation();
   stopAnimation();
-  n = parseInt(innerWidth / 20);
-  m = parseInt(innerHeight / 20);
+  let gridSize = 15;
+  n = parseInt(innerWidth / gridSize);
+  m = parseInt(innerHeight / gridSize);
   canvas.innerHTML = "";
   canvas.style.display = "grid";
-  canvas.style.gridTemplateRows = `repeat(${m},20px)`;
-  canvas.style.gridTemplateColumns = `repeat(${n},20px)`;
+  canvas.style.gridTemplateRows = `repeat(${m},${gridSize}px)`;
+  canvas.style.gridTemplateColumns = `repeat(${n},${gridSize}px)`;
 
   for (let i = 0; i < m; i++) {
     for (let j = 0; j < n; j++) {
@@ -70,10 +73,14 @@ start.addEventListener("click", () => {
     isRunning = true;
     image.setAttribute("src", "./stop.svg");
     document.getElementById("startText").innerHTML = "Stop";
+    document.getElementById("startText").style.color = "red";
+
     animation();
   } else {
     image.setAttribute("src", "./start.svg");
     document.getElementById("startText").innerHTML = "Start";
+    document.getElementById("startText").style.color = "lime";
+
     isRunning = false;
     stopAnimation();
   }
@@ -131,6 +138,8 @@ document.getElementById("reset").addEventListener("click", () => {
   }
   image.setAttribute("src", "./start.svg");
   document.getElementById("startText").innerHTML = "Start";
+  document.getElementById("startText").style.color = "lime";
+
   isRunning = false;
   stopAnimation();
 
